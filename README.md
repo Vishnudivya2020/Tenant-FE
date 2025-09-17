@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+📒 Multi-Tenant Notes Application
+🚀 Project Overview
 
-## Getting Started
+This is a Multi-Tenant SaaS Notes Application built with Next.js (frontend) and Node.js + Express (backend).
+The app allows multiple tenants (companies) to securely manage their users and notes with role-based access control and subscription limits.
 
-First, run the development server:
+✨ Features Completed
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔑 Authentication: Login with predefined user/admin accounts
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🏢 Multi-Tenancy: Each tenant’s data is isolated
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📝 Notes Management: Create, list, and delete notes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📊 Plans:
 
-## Learn More
+Free Plan → limited notes (5 notes)
 
-To learn more about Next.js, take a look at the following resources:
+Pro Plan → unlimited notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+⬆️ Upgrade to Pro:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+“Upgrade to Pro” button visible only when Free tenant reaches the limit
 
-## Deploy on Vercel
+Only Admins can access the Upgrade page.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🛠️ Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Frontend: Next.js (React), Bootstrap for styling
+
+* Backend: Node.js, Express.js
+
+* Database: MongoDB (Mongoose)
+
+* Authentication: JWT + bcrypt
+
+* Hosting: Vercel (frontend + backend)
+
+Deployment
+
+✅ Backend and frontend hosted on Vercel
+
+✅ CORS enabled
+
+✅ Health endpoint available:
+
+GET /health
+{ "status": "ok" }
+
+Frontend:-
+✅ Minimal frontend with login and notes management
+
+✅ Supports:
+
+Login using predefined accounts
+
+List / create / delete notes
+
+Shows “Upgrade to Pro” when Free tenant reaches note limit.
+
+📘 Approach
+
+Used JWT-based authentication for login
+
+Implemented multi-tenancy by linking users with tenant objects
+
+Role-based access: only Admins can upgrade tenants to Pro
+
+/health endpoint added for monitoring
+
+Deployed on Vercel for both backend and frontend.
+
+🔗 API Endpoints
+
+| Method | Endpoint | Description                      |
+| ------ | -------- | -------------------------------- |
+| POST   | `/login` | Authenticate user and return JWT |
+
+
+Notes
+| Method | Endpoint     | Description                      |
+| ------ | ------------ | -------------------------------- |
+| GET    | `/notes`     | Get all notes for logged-in user |
+| POST   | `/notes`     | Create a new note                |
+| DELETE | `/notes/:id` | Delete a note by ID              |
+
+Tanent/Upgrade
+
+| Method | Endpoint           | Description                                 |
+| ------ | ------------------ | ------------------------------------------- |
+| POST   | `/tenants/upgrade` | Upgrade tenant from Free → Pro (Admin only) |
+
+
+Health
+| Method | Endpoint  | Description                  |
+| ------ | --------- | ---------------------------- |
+| GET    | `/health` | Returns `{ "status": "ok" }` |
+
+📦 Predefined Accounts
+Acme Inc (Free Plan)
+
+Admin → admin@acme.test / password
+
+User → user@acme.test / password
+
+Globex Corp (Free Plan)
+
+Admin → admin@globex.test / password
+
+User → user@globex.test / password
+
+
